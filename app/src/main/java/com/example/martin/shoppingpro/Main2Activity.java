@@ -32,6 +32,7 @@ import java.util.Set;
 
 public class Main2Activity extends AppCompatActivity {
 
+    //Test 
     ArrayList<String> selectedItems = new ArrayList<String>();
     ArrayList<String> shoppingList = null;
     ArrayAdapter<String> adapter = null;
