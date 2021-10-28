@@ -30,7 +30,11 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> locationList;
+<<<<<<< HEAD
 
+=======
+    //Hilft den Wert in de
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     ArrayAdapter<String> adapter = null;
     // Create ListView
     ListView shops = null;
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Create
         shops = (ListView) findViewById(R.id.LocationList);
+<<<<<<< HEAD
 
         //Zeigt die Werte an in listview
         shops.setAdapter(adapter);
@@ -61,6 +66,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Löscht einzelne Einträge bei langem Klick
+=======
+        //Zeigt die Werte an
+        shops.setAdapter(adapter);
+
+        //Remove Methode
+        removeShopFromList();
+        selectShopFromList();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+            }
+        });
+    }
+
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     private void removeShopFromList(){
 
 
@@ -77,25 +104,38 @@ public class MainActivity extends AppCompatActivity {
 
                     removeElement(selectedItem, position);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
                 } else {
 
                     Toast.makeText(getApplicationContext(),"Error Removing Element", Toast.LENGTH_LONG).show();
 
                 }
+<<<<<<< HEAD
                 return true;
+=======
+                return false;
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
             }
         });
     }
 
+<<<<<<< HEAD
     //Erfasst einzelnen Wert aus der Liste
     private void selectShopFromList(){
         //Listener, falls geklickt wird, wird ein Event ausgeführt
 
+=======
+    private void selectShopFromList(){
+        //Listener, falls geklickt wird, wird ein Event ausgeführt
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
         shops.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
 
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
 
                 String selected = parent.getItemAtPosition(position).toString();
@@ -109,6 +149,13 @@ public class MainActivity extends AppCompatActivity {
 
                 intent.putExtra("name", selected);
                 startActivity(intent);
+=======
+
+                //--------------------------------------- Ergänzen 1.0---------------------------//
+
+                //Nach einem Klick auf den Shop wird man in die MainActivity2 wo nur die dazugehörigen
+                // Details angezeigt sind. Diese "Details" sind dynamisch erstellte Werte.
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
             }
         });
@@ -128,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+<<<<<<< HEAD
         int id = item.getItemId();
 
         if(id == R.id.action_sort){
@@ -141,6 +189,13 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+=======
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
         //If click on add
         if(id == R.id.action_add_shop){
 
@@ -274,10 +329,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+<<<<<<< HEAD
                 SharedPreferences WordSearchPutPrefs = MainActivity.this.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
 
                 prefEditor.remove("myArray"+locationList.get(position)).commit();
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
                 locationList.remove(position);
 
                 //Werte werden mithilfe storeArrayVal in getApplicationContext gespeichert

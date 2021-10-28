@@ -6,6 +6,10 @@
     <string name="action_sort">Sort List</string>
     <string name="action_add">Add Item</string>
     <string name="action_clear_artikel">Clear Item</string>
+<<<<<<< HEAD
     <string name="action_clear_shop">Clear Shops</string>
+=======
+    <string name="action_clear_shop">Clear Item</string>
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     <string name="action_add_shop">Add Shop</string>
 </resources>

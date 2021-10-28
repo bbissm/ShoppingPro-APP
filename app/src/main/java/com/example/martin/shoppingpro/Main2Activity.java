@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+<<<<<<< HEAD
+=======
+import android.opengl.Visibility;
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,7 +24,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+import android.widget.TextView;
+import android.widget.Toast;
+
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,6 +38,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Main2Activity extends AppCompatActivity {
+<<<<<<< HEAD
     ListView artikel;
     Button clearAllCheckBoxes;
     //listeID für den ID-Bezug aus der MainActivity
@@ -37,6 +48,17 @@ public class Main2Activity extends AppCompatActivity {
     ArrayList<String> selectedItems = new ArrayList<String>();
     ArrayList<String> shoppingList = null;
     ArrayAdapter<String> adapter = null;
+=======
+
+    //Test 
+    ArrayList<String> selectedItems = new ArrayList<String>();
+    ArrayList<String> shoppingList = null;
+    ArrayAdapter<String> adapter = null;
+    ListView artikel = null;
+    Button clearAll;
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyUserChoice" ;
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +67,7 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
         //Holt den Intent von MainActivity
         Intent intent = getIntent();
 
@@ -59,16 +82,32 @@ public class Main2Activity extends AppCompatActivity {
         clearAllCheckBoxes = (Button)findViewById(R.id.clearall);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, shoppingList);
+=======
+        artikel = (ListView) findViewById(R.id.ShoppingList);
+
+        //shoppingList wird mit den vorherigen Werten wieder ersichtlich
+        shoppingList = getArrayVal(getApplicationContext());
+
+        //Clear Button setzt den Zustand der CheckBox in false
+        clearAll = (Button)findViewById(R.id.clearall);
+
+
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, shoppingList);
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
         ArrayAdapter<String> adapterItem = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, shoppingList);
         artikel.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         artikel.setAdapter(adapter);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+<<<<<<< HEAD
 
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
         if(sharedpreferences.contains(MyPREFERENCES)){
             LoadSelections();
         }
 
+<<<<<<< HEAD
         //Bei Klick auf Auswahl speichern
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
 
@@ -104,6 +143,30 @@ public class Main2Activity extends AppCompatActivity {
                 String selected = "";
                 int itemCount = artikel.getCount();
                 for (int i = 0; i < itemCount; i++) {
+=======
+
+
+
+
+        //----------------------------------Ergänzen 1.1----------------------------------
+
+        //Die Artikel die erfasst wurden brauchen eine Beziehung zu dem jeweiligen ausgewählten Shop
+
+
+        AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                View b = findViewById(R.id.del);
+
+
+                SparseBooleanArray checkedItemPositions = artikel.getCheckedItemPositions();
+                String selected = "";
+                int itemCount = artikel.getCount();
+
+
+                for (int i = itemCount; i >= 0; i--) {
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
                     if (checkedItemPositions.get(i)) {
                         selected += artikel.getItemAtPosition(i).toString() + "\n";
@@ -118,9 +181,16 @@ public class Main2Activity extends AppCompatActivity {
             }
 
         };
+<<<<<<< HEAD
         artikel.setOnItemClickListener(mListClickedHandler2);
 
         clearAllCheckBoxes.setOnClickListener(new View.OnClickListener() {
+=======
+
+        artikel.setOnItemClickListener(mListClickedHandler);
+
+        clearAll.setOnClickListener(new View.OnClickListener() {
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
             @Override
             public void onClick(View view) {
 
@@ -128,6 +198,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         FloatingActionButton del = (FloatingActionButton) findViewById(R.id.del);
         del.setImageResource(R.drawable.ic_delete_white_48dp);
 
@@ -170,13 +241,34 @@ public class Main2Activity extends AppCompatActivity {
                 });
                 builder.show();
 
+=======
+
+
+        FloatingActionButton del = (FloatingActionButton) findViewById(R.id.del);
+        del.setImageResource(R.drawable.ic_delete_white_48dp);
+
+        del.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                View b = findViewById(R.id.del);
+                remove();
+                Snackbar.make(view, "The Item('s) is deleted", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                b.setVisibility(View.INVISIBLE);
+
+                //ClearSelections();
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
             }
         });
 
         artikel.setAdapter(adapter);
     };
 
+<<<<<<< HEAD
     //Remove Funktion, die weiter unten verwendet wird.
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     public void remove() {
 
         SparseBooleanArray checkedItemPositions = artikel.getCheckedItemPositions();
@@ -184,7 +276,10 @@ public class Main2Activity extends AppCompatActivity {
 
         for (int i = itemCount - 1; i >= 0; i--) {
             if (checkedItemPositions.get(i)) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
                 adapter.remove((String) shoppingList.get(i));
             }
         }
@@ -208,6 +303,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+<<<<<<< HEAD
         int id = item.getItemId();
 
         if(id == R.id.action_sort){
@@ -222,12 +318,25 @@ public class Main2Activity extends AppCompatActivity {
         }
         //If click on add
         if(id == R.id.action_add){
+=======
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //If click on add
+        if(id == R.id.action_add_shop){
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
             //Dialog zum Hinzufügen erzeugen
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             //Display the Title
+<<<<<<< HEAD
             builder.setTitle("Add Article");
+=======
+            builder.setTitle("Add Shop");
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
             final EditText input = new EditText(this);
 
@@ -250,7 +359,10 @@ public class Main2Activity extends AppCompatActivity {
 
                 }
             });
+<<<<<<< HEAD
 
+=======
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
             //Shows button "Cancel"
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
@@ -318,7 +430,11 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     //Jedes mal wenn jemand etwas erfasst wird das im Store gespeichert
+<<<<<<< HEAD
     public void storeArrayVal(ArrayList<String> inArrayList, Context context)
+=======
+    public static void storeArrayVal(ArrayList<String> inArrayList, Context context)
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     {
 
         //HashSet ist Subklasse von Set
@@ -327,17 +443,29 @@ public class Main2Activity extends AppCompatActivity {
         SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
 
+<<<<<<< HEAD
         prefEditor.putStringSet("myArray"+listeId, WhatToWrite);
         prefEditor.commit();
     }
 
     public ArrayList getArrayVal( Context dan)
+=======
+        prefEditor.putStringSet("myArray", WhatToWrite);
+        prefEditor.commit();
+    }
+
+    public static ArrayList getArrayVal( Context dan)
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     {
 
         SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
 
         Set<String> tempSet = new HashSet<String>();
+<<<<<<< HEAD
         tempSet = WordSearchGetPrefs.getStringSet("myArray" +listeId, tempSet);
+=======
+        tempSet = WordSearchGetPrefs.getStringSet("myArray", tempSet);
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 
         return new ArrayList<String>(tempSet);
     }
@@ -347,7 +475,11 @@ public class Main2Activity extends AppCompatActivity {
 
         SharedPreferences.Editor prefEditor = sharedpreferences.edit();
         String savedItems = getSavedItems();
+<<<<<<< HEAD
         prefEditor.putString("myArray", savedItems);
+=======
+        prefEditor.putString(MyPREFERENCES.toString(), savedItems);
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
         prefEditor.commit();
     }
 
@@ -366,6 +498,15 @@ public class Main2Activity extends AppCompatActivity {
         return savedItems;
     }
 
+<<<<<<< HEAD
+=======
+    //----------------------------------Ergänzen 2.0----------------------------------//
+
+    //Der Checkzustand wird erfolgreich gespeichert und wenn man die App neustartet wird auch die ausgewählte Checkbox
+    //mithilfe Toast ausgegeben -> "Current Item: " + currentItem. Nur wird die Checkbox leider nicht
+    //angeklickt angezeigt. Die soll aber angeklickt angezeigt werden.
+
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
     private void LoadSelections() {
         // if the selections were previously saved load them
 
@@ -381,11 +522,24 @@ public class Main2Activity extends AppCompatActivity {
                 String currentItem = (String) artikel.getAdapter()
                         .getItem(i);
                 if (selectedItems.contains(currentItem)) {
+<<<<<<< HEAD
 
                     artikel.setItemChecked(i, true);
                 } else {
                     artikel.setItemChecked(i, false);
                 }
+=======
+                    artikel.setItemChecked(i, true);
+                    Toast.makeText(getApplicationContext(),
+                            "Current Item: " + currentItem,
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    artikel.setItemChecked(i, false);
+
+
+                }
+
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
             }
         }
     }

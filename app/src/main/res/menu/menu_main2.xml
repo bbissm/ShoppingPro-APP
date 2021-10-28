@@ -9,7 +9,11 @@
         android:title="@string/action_sort"
         app:showAsAction="never" />
 
+<<<<<<< HEAD
     <item android:id="@+id/action_clear"
+=======
+    <item android:id="@+id/action_clea"
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
         android:orderInCategory="300"
         android:title="@string/action_clear_artikel"
         app:showAsAction="never" />
@@ -17,7 +21,16 @@
     <item android:id="@+id/action_add"
         android:icon="@drawable/ic_add_shopping_cart_white_48dp"
         android:title="@string/action_add"
+<<<<<<< HEAD
         app:showAsAction="ifRoom" />
 
     
+=======
+        app:showAsAction="collapseActionView" />
+
+    <item android:id="@+id/action_add_shop"
+        android:icon="@drawable/ic_add_circle_outline_white_48dp"
+        android:title="@string/action_add"
+        app:showAsAction="ifRoom" />
+>>>>>>> f05d3ea2d951769a893f7df343eda9a433c96a10
 </menu>
